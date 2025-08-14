@@ -20,7 +20,6 @@ router.post("/:id/status", updateRequestStatus);
 router.get("/stats", getRequestStats);
 router.post("/:id/upload", upload.single("file"), uploadAdminFile);
 router.put("/:id/payment", markAsPaid);
-router.post("/:id/receipt", uploadReceipt.single("file"), uploadPaymentReceipt);
-
+router.post("/:id/receipt", uploadReceipt.single("receipt"), uploadPaymentReceipt);
 
 module.exports = router;

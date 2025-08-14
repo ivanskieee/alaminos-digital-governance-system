@@ -15,9 +15,12 @@ import {
   Upload,
   Clock,
   CalendarDays,
-  Bell, // For SystemAlert
+  Bell,
+  UploadCloud, // For SystemAlert
 } from "lucide-react";
 import { io } from "socket.io-client";
+import PaymentMethod from "../PaymentLandingPage/PaymentMethod";
+import PaymentMethods from "../qr_pic/qr_code_sample.jfif";
 
 const socket = io("http://localhost:5000");
 const API_BASE = "http://localhost:5000";
@@ -229,7 +232,7 @@ const RecordsLandingPage = () => {
     }
 
     const formData = new FormData();
-    formData.append("file", receiptFile);
+    formData.append("receipt", receiptFile);
 
     try {
       // Step 1: Upload receipt
@@ -656,7 +659,7 @@ const RecordsLandingPage = () => {
           </div>
         </main>
       </div>
-     {showPaymentModal && (
+      {showPaymentModal && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-xl shadow-2xl w-[90%] max-w-md relative">
             <h2 className="text-2xl font-bold text-center text-teal-700 mb-6">
@@ -667,8 +670,13 @@ const RecordsLandingPage = () => {
               <div className="bg-gray-100 p-4 rounded-lg shadow-md mb-4 w-full">
                 <div className="w-full max-w-xs mx-auto h-48 bg-gradient-to-br from-blue-100 to-teal-100 rounded-lg border border-gray-300 shadow-sm flex items-center justify-center">
                   <div className="text-center text-gray-500">
-                    <div className="text-4xl mb-2">📱</div>
-                    <div className="text-sm">GCash QR Code</div>
+                    <div className="w-full max-w-xs mx-auto h-48 bg-gradient-to-br from-blue-100 to-teal-100 rounded-lg border border-gray-300 shadow-sm flex items-center justify-center">
+                      <img
+                        src={PaymentMethods}
+                        alt="GCash QR Code"
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
                   </div>
                 </div>
                 <p className="text-center text-gray-600 mt-2 text-sm">

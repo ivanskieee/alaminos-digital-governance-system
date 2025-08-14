@@ -157,27 +157,32 @@ exports.markAsPaid = (req, res) => {
 };
 
 exports.uploadPaymentReceipt = (req, res) => {
-  const { id } = req.params;
-  const filePath = req.file ? `payment_receipts/${req.file.filename}` : null;
+  try {
+    const { id } = req.params;
+    const filePath = req.file ? `payment_receipts/${req.file.filename}` : null;
 
-  if (!filePath) {
-    return res.status(400).json({ message: "No receipt uploaded" });
-  }
-
-  const query = `
-    UPDATE requests
-    SET receipt_path = ?, payment_status = 'receipt_submitted'
-    WHERE id = ?
-  `;
-
-  db.query(query, [filePath, id], (err) => {
-    if (err) {
-      console.error("Error uploading receipt:", err);
-      return res.status(500).json({ message: "Server error" });
+    if (!filePath) {
+      return res.status(400).json({ message: "No receipt uploaded" });
     }
 
-    res.status(200).json({ message: "Receipt uploaded successfully" });
-  });
+    const query = `
+      UPDATE requests
+      SET receipt_path = ?, payment_status = 'receipt_submitted'
+      WHERE id = ?
+    `;
+
+    db.query(query, [filePath, id], (err) => {
+      if (err) {
+        console.error("Error uploading receipt:", err);
+        return res.status(500).json({ message: "Server error", error: err.message });
+      }
+
+      res.status(200).json({ message: "Receipt uploaded successfully" });
+    });
+  } catch (error) {
+    console.error("Unexpected error:", error);
+    res.status(500).json({ message: "Unexpected server error" });
+  }
 };
 
 
