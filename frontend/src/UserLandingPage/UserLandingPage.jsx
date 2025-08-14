@@ -15,7 +15,39 @@ import {
   ClipboardList,
   X,
   Clock,
+  Activity,
 } from "lucide-react";
+
+const LoadingSplash = ({ isVisible, isDarkMode }) => {
+  return (
+    <div
+      className={`fixed inset-0 z-[100] flex items-center justify-center transition-opacity duration-700
+                  ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"}
+                  ${isDarkMode ? "bg-gray-950" : "bg-white"}`}
+    >
+      <div className="text-center">
+        <Activity
+          className={`w-16 h-16 mx-auto animate-spin mb-4
+                      ${isDarkMode ? "text-teal-400" : "text-teal-600"}`}
+        />
+        <h2
+          className={`text-3xl font-bold ${
+            isDarkMode ? "text-white" : "text-gray-900"
+          }`}
+        >
+          Loading User Panel
+        </h2>
+        <p
+          className={`text-lg ${
+            isDarkMode ? "text-gray-400" : "text-gray-600"
+          }`}
+        >
+          Getting things ready for you...
+        </p>
+      </div>
+    </div>
+  );
+};
 
 export default function UserPage() {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -25,6 +57,42 @@ export default function UserPage() {
   });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const [showSplash, setShowSplash] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const showAlert = (message) => {
+    alert(message);
+  };
+
+  useEffect(() => {
+    const minSplashTime = 1500;
+    const startTime = Date.now();
+
+    // Simulate initial loading, replace with actual data fetching if needed
+    const timer = setTimeout(() => {
+      const elapsedTime = Date.now() - startTime;
+      const remainingTime = minSplashTime - elapsedTime;
+
+      if (remainingTime > 0) {
+        setTimeout(() => setShowSplash(false), remainingTime);
+      } else {
+        setShowSplash(false);
+      }
+
+      // Check for persistent login notification after splash screen
+      const storedNotification = sessionStorage.getItem("loginNotification");
+      if (storedNotification) {
+        try {
+          const { message, type } = JSON.parse(storedNotification);
+          showAlert(message, type, 4000, isDarkMode); // Display the alert
+          sessionStorage.removeItem("loginNotification"); // Clear it after displaying
+        } catch (e) {
+          console.error("Failed to parse stored notification:", e);
+        }
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [showAlert, isDarkMode]);
 
   useEffect(() => {
     localStorage.setItem("UserActiveMenuItem", activeItem);
@@ -56,6 +124,8 @@ export default function UserPage() {
           isCollapsed ? "lg:w-20" : "lg:w-72"
         } hidden lg:flex bg-white shadow-lg transition-all duration-300 flex-col relative z-20 border-r border-gray-100 flex-shrink-0`}
       >
+        <LoadingSplash isVisible={showSplash} isDarkMode={isDarkMode} />
+
         {/* Header */}
         <div className="p-5 border-b border-gray-100 flex items-center justify-between">
           {!isCollapsed && (
