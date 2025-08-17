@@ -329,11 +329,11 @@ export default function AdminPage() {
         { id: "approve", label: "User Approval", icon: CheckCircle },
         {
           id: "records-request",
-          label: "Records Request",
+          label: "Business Request",
           icon: ClipboardList,
         },
-        { id: "indigency", label: "Indigency Request", icon: ClipboardList },
-        { id: "correction", label: "Correction Request", icon: ClipboardList },
+        // { id: "indigency", label: "Indigency Request", icon: ClipboardList },
+        // { id: "correction", label: "Correction Request", icon: ClipboardList },
       ],
     },
     {

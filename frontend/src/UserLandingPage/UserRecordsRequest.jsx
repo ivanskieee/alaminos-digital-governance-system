@@ -409,11 +409,8 @@ const RecordsLandingPage = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">
-                  Resident Records
+                   Business Permit Request
                 </h1>
-                <p className="text-gray-600">
-                  Manage and view resident information and records.
-                </p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
