@@ -132,9 +132,8 @@ const StatusBadge = ({ status }) => {
         return {
           icon: <CheckCircle className="w-3.5 h-3.5" />,
           className:
-            "bg-gradient-to-r from-blue-100 to-teal-100 text-blue-700 border-blue-200",
+            "bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 border-blue-300",
         };
-
       case "rejected":
         return {
           icon: <XCircle className="w-3.5 h-3.5" />,
@@ -170,14 +169,14 @@ const RequestCard = ({ request, onViewDetails, onUpdateStatus }) => {
   };
 
   return (
-    <div className="group bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:border-gray-300">
+    <div className="group bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:border-blue-300">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-teal-500 to-purple-600 rounded-xl flex items-center justify-center shadow-md">
+          <div className="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl flex items-center justify-center shadow-md">
             <User className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h3 className="font-semibold text-gray-900 group-hover:text-teal-600 transition-colors">
+            <h3 className="font-semibold text-gray-900 group-hover:text-blue-900 transition-colors">
               {request.resident_name || "N/A"}
             </h3>
             <p className="text-sm text-gray-500">{request.type}</p>
@@ -189,7 +188,7 @@ const RequestCard = ({ request, onViewDetails, onUpdateStatus }) => {
           <div className="relative">
             <button
               onClick={() => onViewDetails(request)}
-              className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-all duration-200"
+              className="p-2 text-gray-400 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-all duration-200"
             >
               <Eye className="w-4 h-4" />
             </button>
@@ -207,7 +206,7 @@ const RequestCard = ({ request, onViewDetails, onUpdateStatus }) => {
               {formatDate(request.created_at)}
             </span>
             {request.file_path && (
-              <span className="flex items-center text-teal-600">
+              <span className="flex items-center text-blue-900">
                 <FileText className="w-3.5 h-3.5 mr-1" />
                 Attachment
               </span>
@@ -268,7 +267,7 @@ const RequestDetailsModal = ({ request, isOpen, onClose, onUpdateStatus }) => {
           <div className="px-8 py-6 border-b border-gray-100">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-900 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
                   <FileText className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -347,9 +346,9 @@ const RequestDetailsModal = ({ request, isOpen, onClose, onUpdateStatus }) => {
                 <div className="mt-2">
                   <button
                     onClick={() => handleViewDocument(request.file_path)}
-                    className="flex w-full items-center p-4 border-2 border-dashed border-gray-200 rounded-xl hover:border-teal-300 hover:bg-teal-50/50 transition-all cursor-pointer text-left"
+                    className="flex w-full items-center p-4 border-2 border-dashed border-gray-200 rounded-xl hover:border-blue-300 hover:bg-blue-50/50 transition-all cursor-pointer text-left"
                   >
-                    <FolderOpen className="w-6 h-6 text-teal-500 mr-3" />
+                    <FolderOpen className="w-6 h-6 text-blue-900 mr-3" />
                     <div className="flex-1">
                       <p className="font-medium text-gray-900">View Document</p>
                       <p className="text-sm text-gray-500">
@@ -370,18 +369,18 @@ const RequestDetailsModal = ({ request, isOpen, onClose, onUpdateStatus }) => {
                 <div className="mt-2">
                   <button
                     onClick={() => handleViewDocument(request.receipt_path)}
-                    className="flex w-full items-center p-4 border border-indigo-200 bg-indigo-50 rounded-xl hover:border-indigo-300 hover:bg-indigo-100 transition-all cursor-pointer text-left"
+                    className="flex w-full items-center p-4 border border-blue-200 bg-blue-50 rounded-xl hover:border-blue-300 hover:bg-blue-100 transition-all cursor-pointer text-left"
                   >
-                    <FileText className="w-6 h-6 text-indigo-600 mr-3" />
+                    <FileText className="w-6 h-6 text-blue-900 mr-3" />
                     <div className="flex-1">
-                      <p className="font-medium text-indigo-900">
+                      <p className="font-medium text-blue-900">
                         View Receipt
                       </p>
-                      <p className="text-sm text-indigo-600">
+                      <p className="text-sm text-blue-600">
                         Click to view uploaded receipt
                       </p>
                     </div>
-                    <Download className="w-5 h-5 text-indigo-600" />
+                    <Download className="w-5 h-5 text-blue-900" />
                   </button>
                 </div>
               </div>
@@ -474,7 +473,7 @@ const RequestDetailsModal = ({ request, isOpen, onClose, onUpdateStatus }) => {
                       onUpdateStatus(request.id, "approved");
                       onClose();
                     }}
-                    className="px-4 py-2 bg-emerald-50 text-emerald-700 rounded-xl hover:bg-emerald-100 transition-colors font-medium"
+                    className="px-4 py-2 bg-blue-50 text-blue-700 rounded-xl hover:bg-blue-100 transition-colors font-medium"
                   >
                     Approve
                   </button>
@@ -617,7 +616,7 @@ const AdminRecordsRequest = () => {
   });
 
   return (
-    <div className="max-h-[87vh] bg-gradient-to-br from-slate-50 via-blue-50 to-teal-50">
+    <div className="max-h-[87vh] bg-gradient-to-br from-slate-50 via-blue-50 to-blue-100">
       {toast && (
         <Toast
           message={toast.message}
@@ -636,7 +635,7 @@ const AdminRecordsRequest = () => {
 
       <main className="p-6 space-y-8 ">
         {/* Controls and Filters */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6  ">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
           <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
             <div className="flex items-center space-x-4 flex-1">
               <div className="relative flex-1 max-w-md">
@@ -646,14 +645,14 @@ const AdminRecordsRequest = () => {
                   placeholder="Search requests..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-900 focus:border-transparent transition-all"
                 />
               </div>
               <div className="relative">
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="appearance-none bg-white border border-gray-200 rounded-xl px-4 py-2.5 pr-8 focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                  className="appearance-none bg-white border border-gray-200 rounded-xl px-4 py-2.5 pr-8 focus:ring-2 focus:ring-blue-900 focus:border-transparent transition-all"
                 >
                   <option value="all">All Status</option>
                   <option value="pending">Pending</option>
@@ -669,9 +668,9 @@ const AdminRecordsRequest = () => {
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold text-gray-900 flex items-center">
-              <List className="w-6 h-6 mr-3 text-teal-600" />
+              <List className="w-6 h-6 mr-3 text-blue-900" />
               Recent Requests
-              <span className="ml-3 px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-medium">
+              <span className="ml-3 px-3 py-1 bg-blue-100 text-blue-900 rounded-full text-sm font-medium">
                 {filteredRequests.length}
               </span>
             </h2>
@@ -705,7 +704,7 @@ const AdminRecordsRequest = () => {
                         setSearchTerm("");
                         setStatusFilter("all");
                       }}
-                      className="px-4 py-2 bg-teal-600 text-white rounded-xl hover:bg-teal-700 transition-colors"
+                      className="px-4 py-2 bg-blue-900 text-white rounded-xl hover:bg-blue-800 transition-colors"
                     >
                       Clear Filters
                     </button>

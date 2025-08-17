@@ -21,6 +21,9 @@ import {
   Menu,
   Activity, // For loading spinner in splash
   ListChecks, // Icon for Request Types
+  XCircle,
+  AlertCircle,
+  Bell,
 } from "lucide-react";
 
 // Custom CSS for glassmorphism and animations (Tailwind doesn't directly support backdrop-filter)
@@ -72,9 +75,9 @@ const customStyles = `
     transform: translateY(-50%);
     width: 4px; /* Width of the glowing bar */
     height: 80%; /* Height of the glowing bar */
-    background: linear-gradient(to bottom, #20c997, #17a2b8); /* Teal to Cyan gradient */
+    background: linear-gradient(to bottom, #1e3a8a, #1d4ed8); /* Blue-900 to Blue-700 gradient */
     border-radius: 2px;
-    box-shadow: 0 0 8px rgba(32, 201, 151, 0.8), 0 0 16px rgba(23, 162, 184, 0.6); /* Soft glow */
+    box-shadow: 0 0 8px rgba(30, 58, 138, 0.8), 0 0 16px rgba(29, 78, 216, 0.6); /* Soft blue glow */
     transition: all 0.3s ease-out;
   }
   .nav-item-active:hover::before {
@@ -93,7 +96,7 @@ const LoadingSplash = ({ isVisible, isDarkMode }) => {
       <div className="text-center">
         <Activity
           className={`w-16 h-16 mx-auto animate-spin mb-4
-                      ${isDarkMode ? "text-teal-400" : "text-teal-600"}`}
+                      ${isDarkMode ? "text-blue-400" : "text-blue-900"}`}
         />
         <h2
           className={`text-3xl font-bold ${
@@ -351,7 +354,7 @@ export default function AdminPage() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userInfo");
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -398,7 +401,7 @@ export default function AdminPage() {
           >
             {!isCollapsed && (
               <div className="flex items-center space-x-3">
-                <div className="w-9 h-9 bg-teal-600 rounded-lg flex items-center justify-center shadow-md">
+                <div className="w-9 h-9 bg-blue-900 rounded-lg flex items-center justify-center shadow-md">
                   <LayoutDashboard className="w-5 h-5 text-white" />
                 </div>
                 <span
@@ -414,8 +417,8 @@ export default function AdminPage() {
               onClick={() => setIsCollapsed(!isCollapsed)}
               className={`p-2 rounded-full hover:bg-gray-700/30 transition-colors duration-200 focus:outline-none focus:ring-2 ${
                 isDarkMode
-                  ? "focus:ring-teal-700 text-gray-400 hover:text-white"
-                  : "focus:ring-teal-200 text-gray-600 hover:text-gray-800"
+                  ? "focus:ring-blue-700 text-gray-400 hover:text-white"
+                  : "focus:ring-blue-200 text-gray-600 hover:text-gray-800"
               }`}
               title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
             >
@@ -454,8 +457,8 @@ export default function AdminPage() {
                             isActive
                               ? `${
                                   isDarkMode
-                                    ? "bg-teal-600/20 text-teal-200"
-                                    : "bg-teal-100 text-teal-800"
+                                    ? "bg-blue-900/20 text-blue-200"
+                                    : "bg-blue-100 text-blue-800"
                                 } font-semibold nav-item-active`
                               : `${
                                   isDarkMode
@@ -471,12 +474,12 @@ export default function AdminPage() {
                           className={`w-6 h-6 flex-shrink-0 ${
                             isActive
                               ? `${
-                                  isDarkMode ? "text-teal-400" : "text-teal-700"
+                                  isDarkMode ? "text-blue-400" : "text-blue-700"
                                 }`
                               : `${
                                   isDarkMode
-                                    ? "text-gray-400 group-hover:text-teal-300"
-                                    : "text-gray-500 group-hover:text-teal-600"
+                                    ? "text-gray-400 group-hover:text-blue-300"
+                                    : "text-gray-500 group-hover:text-blue-600"
                                 }`
                           }`}
                         />
@@ -504,7 +507,7 @@ export default function AdminPage() {
                 isCollapsed ? "justify-center" : "space-x-3"
               } mb-3`}
             >
-              <div className="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+              <div className="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
                 <User className="w-6 h-6 text-white" />
               </div>
               {!isCollapsed && (
@@ -598,7 +601,7 @@ export default function AdminPage() {
             } lg:hidden shadow-md z-10`}
           >
             <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 bg-teal-600 rounded-lg flex items-center justify-center shadow-md">
+              <div className="w-9 h-9 bg-blue-900 rounded-lg flex items-center justify-center shadow-md">
                 <LayoutDashboard className="w-5 h-5 text-white" />
               </div>
               <span
@@ -613,8 +616,8 @@ export default function AdminPage() {
               onClick={() => setIsMobileMenuOpen(true)}
               className={`p-2 rounded-full hover:bg-gray-700/30 transition-colors duration-200 focus:outline-none focus:ring-2 ${
                 isDarkMode
-                  ? "focus:ring-teal-700 text-gray-400 hover:text-white"
-                  : "focus:ring-teal-200 text-gray-600 hover:text-gray-800"
+                  ? "focus:ring-blue-700 text-gray-400 hover:text-white"
+                  : "focus:ring-blue-200 text-gray-600 hover:text-gray-800"
               }`}
               aria-label="Open menu"
             >
@@ -675,8 +678,8 @@ export default function AdminPage() {
                                   isActive
                                     ? `${
                                         isDarkMode
-                                          ? "bg-teal-600/20 text-teal-200"
-                                          : "bg-teal-100 text-teal-800"
+                                          ? "bg-blue-900/20 text-blue-200"
+                                          : "bg-blue-100 text-blue-800"
                                       } font-semibold nav-item-active`
                                     : `${
                                         isDarkMode
@@ -690,13 +693,13 @@ export default function AdminPage() {
                                   isActive
                                     ? `${
                                         isDarkMode
-                                          ? "text-teal-400"
-                                          : "text-teal-700"
+                                          ? "text-blue-400"
+                                          : "text-blue-700"
                                       }`
                                     : `${
                                         isDarkMode
-                                          ? "text-gray-400 group-hover:text-teal-300"
-                                          : "text-gray-500 group-hover:text-teal-600"
+                                          ? "text-gray-400 group-hover:text-blue-300"
+                                          : "text-gray-500 group-hover:text-blue-600"
                                       }`
                                 }`}
                               />
@@ -778,7 +781,7 @@ export default function AdminPage() {
           {/* Page Content Area */}
           <main
             className={`flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto ${
-              isDarkMode ? "bg-gray-900" : "bg-teal-50"
+              isDarkMode ? "bg-gray-900" : "bg-blue-50"
             }`}
           >
             {activeItem === "dashboard" && (
@@ -885,8 +888,8 @@ export default function AdminPage() {
                     isActive
                       ? `${
                           isDarkMode
-                            ? "text-teal-400 bg-teal-900/30"
-                            : "text-teal-800 bg-teal-100"
+                            ? "text-blue-400 bg-blue-900/30"
+                            : "text-blue-800 bg-blue-100"
                         }`
                       : `${
                           isDarkMode
@@ -898,10 +901,10 @@ export default function AdminPage() {
                   <Icon
                     className={`w-5 h-5 mb-1 ${
                       isActive
-                        ? `${isDarkMode ? "text-teal-400" : "text-teal-700"}`
+                        ? `${isDarkMode ? "text-blue-400" : "text-blue-700"}`
                         : `${
                             isDarkMode
-                              ? "text-gray-500 group-hover:text-teal-300"
+                              ? "text-gray-500 group-hover:text-blue-300"
                               : "text-gray-400"
                           }`
                     }`}
@@ -917,8 +920,8 @@ export default function AdminPage() {
                   isMobileMenuOpen
                     ? `${
                         isDarkMode
-                          ? "text-teal-400 bg-teal-900/30"
-                          : "text-teal-800 bg-teal-100"
+                          ? "text-blue-400 bg-blue-900/30"
+                          : "text-blue-800 bg-blue-100"
                       }`
                     : `${
                         isDarkMode

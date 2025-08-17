@@ -290,7 +290,7 @@ const ChartContainer = ({
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="p-2 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg shadow-md">
+          <div className="p-2 bg-gradient-to-br from-blue-900 to-blue-600 rounded-lg shadow-md">
             <Icon className="w-5 h-5 text-white" />
           </div>
           <h3

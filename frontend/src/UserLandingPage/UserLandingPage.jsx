@@ -28,7 +28,7 @@ const LoadingSplash = ({ isVisible, isDarkMode }) => {
       <div className="text-center">
         <Activity
           className={`w-16 h-16 mx-auto animate-spin mb-4
-                      ${isDarkMode ? "text-teal-400" : "text-teal-600"}`}
+                      ${isDarkMode ? "text-blue-400" : "text-blue-900"}`}
         />
         <h2
           className={`text-3xl font-bold ${
@@ -113,7 +113,7 @@ export default function UserPage() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userInfo");
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -130,7 +130,7 @@ export default function UserPage() {
         <div className="p-5 border-b border-gray-100 flex items-center justify-between">
           {!isCollapsed && (
             <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 bg-teal-500 rounded-lg flex items-center justify-center shadow-md">
+              <div className="w-9 h-9 bg-blue-900 rounded-lg flex items-center justify-center shadow-md">
                 <LayoutDashboard className="w-5 h-5 text-white" />
               </div>
               <span className="font-extrabold text-gray-800 text-xl tracking-wide">
@@ -140,7 +140,7 @@ export default function UserPage() {
           )}
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-200 text-gray-600"
+            className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-200 text-gray-600"
             title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
           >
             {isCollapsed ? (
@@ -163,14 +163,14 @@ export default function UserPage() {
                 className={`w-full flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 group
                   ${
                     isActive
-                      ? "bg-teal-50 text-teal-700 font-semibold border-l-4 border-teal-500"
+                      ? "bg-blue-50 text-blue-900 font-semibold border-l-4 border-blue-900"
                       : "text-gray-600 hover:bg-gray-50 hover:text-gray-800"
                   }`}
               >
                 <Icon
                   className={`w-6 h-6 ${
                     isActive
-                      ? "text-teal-600"
+                      ? "text-blue-900"
                       : "text-gray-500 group-hover:text-gray-700"
                   }`}
                 />
@@ -186,7 +186,7 @@ export default function UserPage() {
               isCollapsed ? "justify-center" : "space-x-3"
             } mb-3`}
           >
-            <div className="w-12 h-12 bg-orange-400 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+            <div className="w-12 h-12 bg-blue-900 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
               <User className="w-6 h-6 text-white" />
             </div>
             {!isCollapsed && (
@@ -217,7 +217,7 @@ export default function UserPage() {
         {/* Top Bar for Mobile (with menu button) */}
         <div className="bg-white p-4 flex items-center justify-between border-b border-gray-100 lg:hidden">
           <div className="flex items-center space-x-3">
-            <div className="w-9 h-9 bg-teal-500 rounded-lg flex items-center justify-center shadow-md">
+            <div className="w-9 h-9 bg-blue-900 rounded-lg flex items-center justify-center shadow-md">
               <LayoutDashboard className="w-5 h-5 text-white" />
             </div>
             <span className="font-extrabold text-gray-800 text-xl tracking-wide">
@@ -261,14 +261,14 @@ export default function UserPage() {
                       className={`w-full flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 group
                         ${
                           isActive
-                            ? "bg-teal-50 text-teal-700 font-semibold border-l-4 border-teal-500"
+                            ? "bg-blue-50 text-blue-900 font-semibold border-l-4 border-blue-900"
                             : "text-gray-600 hover:bg-gray-50 hover:text-gray-800"
                         }`}
                     >
                       <Icon
                         className={`w-6 h-6 ${
                           isActive
-                            ? "text-teal-600"
+                            ? "text-blue-900"
                             : "text-gray-500 group-hover:text-gray-700"
                         }`}
                       />
@@ -306,7 +306,7 @@ export default function UserPage() {
         )}
 
         {/* Page Content Area */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto bg-teal-50">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto bg-blue-50">
           {activeItem === "dashboard" && (
             <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 text-center text-gray-700 font-semibold text-xl sm:text-2xl h-full flex items-center justify-center border border-gray-100"></div>
           )}
@@ -345,13 +345,13 @@ export default function UserPage() {
               className={`flex flex-col items-center justify-center p-2 rounded-lg transition-colors duration-200 text-sm font-medium
                 ${
                   isActive
-                    ? "text-teal-600 bg-teal-50"
+                    ? "text-blue-900 bg-blue-50"
                     : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                 }`}
             >
               <Icon
                 className={`w-5 h-5 mb-1 ${
-                  isActive ? "text-teal-600" : "text-gray-400"
+                  isActive ? "text-blue-900" : "text-gray-400"
                 }`}
               />
               {item.label}
@@ -364,7 +364,7 @@ export default function UserPage() {
           className={`flex flex-col items-center justify-center p-2 rounded-lg transition-colors duration-200 text-sm font-medium
                 ${
                   isMobileMenuOpen
-                    ? "text-teal-600 bg-teal-50"
+                    ? "text-blue-900 bg-blue-50"
                     : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                 }`}
         >

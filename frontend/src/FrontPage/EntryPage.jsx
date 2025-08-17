@@ -285,7 +285,7 @@ const EntryPage = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            A New Standard in Records Management
+            A New Standard in Digital Systems
           </h2>
           <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
             Discover a suite of powerful features designed to streamline your

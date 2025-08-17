@@ -190,7 +190,7 @@ const RecordsLandingPage = () => {
           value: data.total,
           icon: FileText,
           bgColor: "bg-blue-100",
-          textColor: "text-blue-600",
+          textColor: "text-blue-900",
         },
         {
           title: "Pending Requests",
@@ -210,8 +210,8 @@ const RecordsLandingPage = () => {
           title: "This Month",
           value: data.thisMonth,
           icon: CalendarDays,
-          bgColor: "bg-purple-100",
-          textColor: "text-purple-600",
+          bgColor: "bg-blue-100",
+          textColor: "text-blue-900",
         },
       ]);
     } catch (err) {
@@ -389,7 +389,7 @@ const RecordsLandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-teal-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
       {systemAlert && (
         <SystemAlert
           message={systemAlert.message}
@@ -404,7 +404,7 @@ const RecordsLandingPage = () => {
         <header className="bg-white border-b border-gray-200 px-6 py-4 shadow-sm">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-r from-teal-600 to-cyan-600 rounded-lg">
+              <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-900 to-blue-800 rounded-lg">
                 <Building className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -415,7 +415,7 @@ const RecordsLandingPage = () => {
             </div>
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-3 p-2 rounded-xl bg-gray-50 hover:bg-gray-100 cursor-pointer">
-                <div className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-teal-500 rounded-full flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-r from-blue-800 to-blue-900 rounded-full flex items-center justify-center">
                   <span className="text-white text-sm font-semibold">
                     {getInitials(userInfo.first_name)}
                   </span>
@@ -467,12 +467,12 @@ const RecordsLandingPage = () => {
           </div>
 
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-            <div className="bg-gradient-to-r from-teal-500 to-cyan-600 px-6 py-4">
+            <div className="bg-gradient-to-r from-blue-900 to-blue-800 px-6 py-4">
               <h2 className="text-xl font-semibold text-white flex items-center">
                 <FileText className="w-5 h-5 mr-2" />
                 Create New Request
               </h2>
-              <p className="text-teal-100 text-sm mt-1">
+              <p className="text-blue-100 text-sm mt-1">
                 Submit your request for processing by the LGU office
               </p>
             </div>
@@ -488,7 +488,7 @@ const RecordsLandingPage = () => {
                       value={type}
                       onChange={(e) => setType(e.target.value)}
                       disabled={isSubmitting || requestTypes.length === 0}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors bg-white"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-900 focus:border-blue-900 transition-colors bg-white"
                     >
                       {requestTypes.length === 0 ? (
                         <option value="">No request types available</option>
@@ -520,7 +520,7 @@ const RecordsLandingPage = () => {
                         type="file"
                         onChange={(e) => setFile(e.target.files[0])}
                         disabled={isSubmitting}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-900 focus:border-blue-900 transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-900 hover:file:bg-blue-100"
                         required
                       />
                       <Upload className="absolute right-3 top-3 w-5 h-5 text-gray-400 pointer-events-none" />
@@ -536,7 +536,7 @@ const RecordsLandingPage = () => {
                     value={details}
                     onChange={(e) => setDetails(e.target.value)}
                     disabled={isSubmitting}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-900 focus:border-blue-900 transition-colors resize-none"
                     rows="4"
                     placeholder="Please provide detailed information about your request..."
                     required
@@ -556,7 +556,7 @@ const RecordsLandingPage = () => {
                     className={`px-8 py-3 rounded-lg font-semibold transition-all duration-200 flex items-center space-x-2 ${
                       isSubmitting || requestTypes.length === 0
                         ? "bg-gray-400 cursor-not-allowed"
-                        : "bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 hover:shadow-lg transform hover:-translate-y-0.5"
+                        : "bg-gradient-to-r from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-700 hover:shadow-lg transform hover:-translate-y-0.5"
                     } text-white`}
                   >
                     {isSubmitting ? (
@@ -578,7 +578,7 @@ const RecordsLandingPage = () => {
 
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-              <Clock className="w-5 h-5 mr-2 text-teal-600" />
+              <Clock className="w-5 h-5 mr-2 text-blue-900" />
               Recent Activity
             </h3>
             <div className="space-y-3">
@@ -600,7 +600,7 @@ const RecordsLandingPage = () => {
                               ? "bg-green-500"
                               : activity.status === "pending"
                               ? "bg-yellow-500"
-                              : "bg-blue-500"
+                              : "bg-blue-900"
                           }`}
                         ></div>
                         <div>
@@ -618,7 +618,7 @@ const RecordsLandingPage = () => {
                                 onClick={() =>
                                   handleProceedToPayment(activity.id)
                                 }
-                                className="mt-2 bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition"
+                                className="mt-2 bg-blue-900 text-white px-3 py-1 rounded text-sm hover:bg-blue-800 transition"
                               >
                                 Proceed to Payment
                               </button>
@@ -639,7 +639,7 @@ const RecordsLandingPage = () => {
                                 href={`${API_BASE}/uploads/${activity.admin_file_path}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="block mt-2 text-xs text-blue-600 hover:underline"
+                                className="block mt-2 text-xs text-blue-900 hover:underline"
                               >
                                 Download Final Document
                               </a>
@@ -659,15 +659,15 @@ const RecordsLandingPage = () => {
       {showPaymentModal && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-xl shadow-2xl w-[90%] max-w-md relative">
-            <h2 className="text-2xl font-bold text-center text-teal-700 mb-6">
+            <h2 className="text-2xl font-bold text-center text-blue-900 mb-6">
               GCash Payment
             </h2>
 
             <div className="flex flex-col items-center">
               <div className="bg-gray-100 p-4 rounded-lg shadow-md mb-4 w-full">
-                <div className="w-full max-w-xs mx-auto h-48 bg-gradient-to-br from-blue-100 to-teal-100 rounded-lg border border-gray-300 shadow-sm flex items-center justify-center">
+                <div className="w-full max-w-xs mx-auto h-48 bg-gradient-to-br from-blue-100 to-blue-50 rounded-lg border border-gray-300 shadow-sm flex items-center justify-center">
                   <div className="text-center text-gray-500">
-                    <div className="w-full max-w-xs mx-auto h-48 bg-gradient-to-br from-blue-100 to-teal-100 rounded-lg border border-gray-300 shadow-sm flex items-center justify-center">
+                    <div className="w-full max-w-xs mx-auto h-48 bg-gradient-to-br from-blue-100 to-blue-50 rounded-lg border border-gray-300 shadow-sm flex items-center justify-center">
                       <img
                         src={PaymentMethods}
                         alt="GCash QR Code"
@@ -689,7 +689,7 @@ const RecordsLandingPage = () => {
                   type="file"
                   accept="image/*"
                   onChange={(e) => setReceiptFile(e.target.files[0])}
-                  className="block w-full mb-4 text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-teal-50 file:text-teal-700 hover:file:bg-teal-100"
+                  className="block w-full mb-4 text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-900 hover:file:bg-blue-100"
                 />
               </div>
 
@@ -702,7 +702,7 @@ const RecordsLandingPage = () => {
                 </button>
                 <button
                   onClick={handleReceiptUpload}
-                  className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+                  className="px-3 py-1 text-sm bg-blue-900 text-white rounded hover:bg-blue-800 transition-colors"
                 >
                   Submit Receipt
                 </button>
